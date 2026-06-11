@@ -23,12 +23,6 @@ android {
             keyAlias = signingProp("keyAlias", "VSCODROID_KEY_ALIAS", "vscodroid")
             keyPassword = signingProp("keyPassword", "VSCODROID_KEY_PASSWORD")
         }
-        create("debugConfig") {
-            storeFile = file("${rootDir}/debug.keystore")
-            storePassword = "android"
-            keyAlias = "androiddebugkey"
-            keyPassword = "android"
-        }
     }
 
     defaultConfig {
@@ -59,7 +53,6 @@ android {
             isMinifyEnabled = false
             applicationIdSuffix = ".debug"
             versionNameSuffix = "-debug"
-            signingConfig = signingConfigs.getByName("debugConfig")
         }
     }
 

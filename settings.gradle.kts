@@ -17,6 +17,7 @@ dependencyResolutionManagement {
 
 rootProject.name = "VSCodroid"
 include(":app")
+project(":app").projectDir = File(rootDir, "VSCodroid-main/android/app")
 
 // On-demand toolchain asset packs (Play Asset Delivery)
 include(":toolchain_go")
