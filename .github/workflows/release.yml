@@ -58,8 +58,11 @@ jobs:
             downloads-
 
       # Download and prepare all core assets
+      - name: Debug directory structure
+        run: ls -la && ls -la scripts/ || echo "scripts not found"
+
       - name: Download VS Code Server
-        run: bash scripts/download-vscode-server.sh
+        run: bash ./scripts/download-vscode-server.sh
 
       - name: Copy VS Code Server to assets
         run: |
@@ -68,19 +71,19 @@ jobs:
           cp -r server/vscode-reh app/src/main/assets/vscode-reh
 
       - name: Download Termux tools
-        run: bash scripts/download-termux-tools.sh
+        run: bash ./scripts/download-termux-tools.sh
 
       - name: Download npm
-        run: bash scripts/download-npm.sh
+        run: bash ./scripts/download-npm.sh
 
       - name: Download Python
-        run: bash scripts/download-python.sh
+        run: bash ./scripts/download-python.sh
 
       - name: Download extensions
-        run: bash scripts/download-extensions.sh
+        run: bash ./scripts/download-extensions.sh
 
       - name: Build node-pty
-        run: bash scripts/build-node-pty.sh
+        run: bash ./scripts/build-node-pty.sh
 
       # libnode.so must exist as a GitHub release asset or be downloadable via LIBNODE_URL.
       - name: Fetch libnode.so
@@ -146,7 +149,7 @@ jobs:
           VSCODROID_KEYSTORE_PASSWORD: ${{ secrets.KEYSTORE_PASSWORD }}
           VSCODROID_KEY_ALIAS: ${{ secrets.KEY_ALIAS }}
           VSCODROID_KEY_PASSWORD: ${{ secrets.KEY_PASSWORD }}
-        run: ./gradlew assembleRelease
+        run: bash ./gradlew assembleRelease
 
       # AAB requires toolchain asset packs (~360 MB) which aren't in git.
       # AAB is built locally for Play Store upload. CI only builds APK for GitHub Releases.
@@ -178,12 +181,12 @@ jobs:
 
       - name: Download toolchain assets
         run: |
-          bash scripts/download-go.sh
-          bash scripts/download-ruby.sh
-          bash scripts/download-java.sh
+          bash ./scripts/download-go.sh
+          bash ./scripts/download-ruby.sh
+          bash ./scripts/download-java.sh
 
       - name: Package toolchain ZIPs
-        run: bash scripts/package-toolchains.sh
+        run: bash ./scripts/package-toolchains.sh
 
       - name: Generate checksums
         run: |

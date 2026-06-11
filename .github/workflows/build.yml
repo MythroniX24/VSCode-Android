@@ -76,9 +76,12 @@ jobs:
         run: sudo apt-get install -y --no-install-recommends libarchive-tools
 
       # Download and prepare all assets (only if not cached)
+      - name: Debug directory structure
+        run: ls -la && ls -la scripts/ || echo "scripts not found"
+
       - name: Download VS Code Server
         if: steps.cache-assets.outputs.cache-hit != 'true'
-        run: bash scripts/download-vscode-server.sh
+        run: bash ./scripts/download-vscode-server.sh
 
       - name: Copy VS Code Server to assets
         if: steps.cache-assets.outputs.cache-hit != 'true'
@@ -89,23 +92,23 @@ jobs:
 
       - name: Download Termux tools
         if: steps.cache-assets.outputs.cache-hit != 'true'
-        run: bash scripts/download-termux-tools.sh
+        run: bash ./scripts/download-termux-tools.sh
 
       - name: Download npm
         if: steps.cache-assets.outputs.cache-hit != 'true'
-        run: bash scripts/download-npm.sh
+        run: bash ./scripts/download-npm.sh
 
       - name: Download Python
         if: steps.cache-assets.outputs.cache-hit != 'true'
-        run: bash scripts/download-python.sh
+        run: bash ./scripts/download-python.sh
 
       - name: Download extensions
         if: steps.cache-assets.outputs.cache-hit != 'true'
-        run: bash scripts/download-extensions.sh
+        run: bash ./scripts/download-extensions.sh
 
       - name: Build node-pty
         if: steps.cache-assets.outputs.cache-hit != 'true'
-        run: bash scripts/build-node-pty.sh
+        run: bash ./scripts/build-node-pty.sh
 
       # libnode.so: Download pre-built binary from latest GitHub release.
       # If no release exists yet, create a stub so Gradle can produce an APK
@@ -144,7 +147,7 @@ jobs:
 
       - name: Build debug APK
         working-directory: .
-        run: ./gradlew assembleDebug
+        run: bash ./gradlew assembleDebug
 
       - name: Upload debug APK
         uses: actions/upload-artifact@v4
@@ -187,4 +190,4 @@ jobs:
 
       - name: Run unit tests
         working-directory: .
-        run: ./gradlew testDebugUnitTest
+        run: bash ./gradlew testDebugUnitTest

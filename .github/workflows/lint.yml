@@ -45,7 +45,7 @@ jobs:
 
       - name: Run lint
         working-directory: .
-        run: ./gradlew lint
+        run: bash ./gradlew lint
 
       - name: Upload lint report
         if: always()
