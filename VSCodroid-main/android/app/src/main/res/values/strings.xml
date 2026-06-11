@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">VSCodroid</string>
+    <string name="notification_channel_name">VSCodroid Server</string>
+    <string name="notification_channel_description">Keeps the local development server running</string>
+    <string name="notification_title">VSCodroid is running</string>
+    <string name="notification_text">Local development server active</string>
+    <string name="action_stop">Stop Server</string>
+    <string name="extracting_title">Setting up VSCodroid</string>
+    <string name="extracting_message">Extracting core files\u2026</string>
+    <string name="error_server_start">Failed to start development server</string>
+    <string name="error_server_timeout">Server took too long to start</string>
+    <string name="error_webview_crash">Display crashed. Reloading\u2026</string>
+    <string name="error_webview_too_old">Your WebView is too old. Please update Android System WebView.</string>
+    <string name="error_storage_full">Not enough storage space. Free at least 500 MB and try again.</string>
+    <string name="error_setup_failed">Setup failed. Tap Retry or reinstall the app.</string>
+    <string name="key_tab">Tab</string>
+    <string name="key_esc">Esc</string>
+    <string name="key_ctrl">Ctrl</string>
+    <string name="key_alt">Alt</string>
+    <string name="key_left">\u2190</string>
+    <string name="key_right">\u2192</string>
+    <string name="key_up">\u2191</string>
+    <string name="key_down">\u2193</string>
+    <string name="key_braces">{}</string>
+    <string name="key_parens">()</string>
+    <string name="key_semicolon">;</string>
+    <string name="key_colon">:</string>
+    <string name="key_quote">"</string>
+    <string name="key_slash">/</string>
+    <string name="legal_disclaimer">VSCodroid is built from the MIT-licensed Code - OSS source code.\nNot affiliated with or endorsed by Microsoft Corporation.\n\"Visual Studio Code\" and \"VS Code\" are trademarks of Microsoft.\nUses Open VSX extension registry, not Microsoft Marketplace.</string>
+
+    <!-- About dialog -->
+    <string name="about_title">About VSCodroid</string>
+    <string name="about_version_format">Version %s</string>
+
+    <!-- Toolchain picker (first-run) -->
+    <string name="picker_title">What do you code in?</string>
+    <string name="picker_subtitle">Optional \u2014 you can add these anytime in Settings.</string>
+    <string name="picker_included">Node.js, Python, and Git are already included.</string>
+    <string name="picker_continue">Continue</string>
+    <string name="picker_skip">Skip</string>
+
+    <!-- Toolchain download progress -->
+    <string name="progress_title">Installing toolchains\u2026</string>
+    <string name="progress_waiting">Waiting\u2026</string>
+    <string name="progress_installing">Installing\u2026</string>
+    <string name="progress_done">Done</string>
+    <string name="progress_failed">Failed</string>
+    <string name="progress_cancel">Cancel</string>
+    <string name="progress_retry">Retry</string>
+
+    <!-- Toolchain settings -->
+    <string name="toolchain_settings_title">Toolchains</string>
+    <string name="toolchain_installed">Installed</string>
+    <string name="toolchain_install">Install</string>
+    <string name="toolchain_remove">Remove</string>
+    <string name="toolchain_cancel">Cancel</string>
+    <string name="toolchain_remove_confirm_title">Remove %s?</string>
+    <string name="toolchain_remove_confirm_message">This will delete all %s files. You can reinstall anytime.</string>
+</resources>
