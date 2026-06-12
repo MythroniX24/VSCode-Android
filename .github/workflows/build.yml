@@ -24,18 +24,18 @@ jobs:
 
       - name: Support submodule VSCodroid-main nested directory layout
         run: |
-          if [ -d "VSCodroid-main" ]; then
-            echo "Submodule/nested directory VSCodroid-main detected. Syncing to root directory structure..."
-            [ ! -d "app" ] && ln -s VSCodroid-main/android/app app
-            [ ! -d "toolchain_go" ] && ln -s VSCodroid-main/android/toolchain_go toolchain_go
-            [ ! -d "toolchain_ruby" ] && ln -s VSCodroid-main/android/toolchain_ruby toolchain_ruby
-            [ ! -d "toolchain_java" ] && ln -s VSCodroid-main/android/toolchain_java toolchain_java
-            [ ! -d "scripts" ] && ln -s VSCodroid-main/scripts scripts
-            [ ! -d "gradle" ] && ln -s VSCodroid-main/android/gradle gradle
-            [ ! -f "gradlew" ] && ln -s VSCodroid-main/android/gradlew gradlew
-            [ ! -f "gradlew.bat" ] && ln -s VSCodroid-main/android/gradlew.bat gradlew.bat
-            [ ! -f "gradle.properties" ] && ln -s VSCodroid-main/android/gradle.properties gradle.properties
-            [ ! -f "build.gradle.kts" ] && ln -s VSCodroid-main/android/build.gradle.kts build.gradle.kts
+          if [ -d "VSCodroid-main/android" ]; then
+            echo "Submodule/nested directory VSCodroid-main detected with valid sources. Syncing to root directory structure..."
+            [ -d "VSCodroid-main/android/app" ] && [ ! -d "app" ] && ln -s VSCodroid-main/android/app app || true
+            [ -d "VSCodroid-main/android/toolchain_go" ] && [ ! -d "toolchain_go" ] && ln -s VSCodroid-main/android/toolchain_go toolchain_go || true
+            [ -d "VSCodroid-main/android/toolchain_ruby" ] && [ ! -d "toolchain_ruby" ] && ln -s VSCodroid-main/android/toolchain_ruby toolchain_ruby || true
+            [ -d "VSCodroid-main/android/toolchain_java" ] && [ ! -d "toolchain_java" ] && ln -s VSCodroid-main/android/toolchain_java toolchain_java || true
+            [ -d "VSCodroid-main/scripts" ] && [ ! -d "scripts" ] && ln -s VSCodroid-main/scripts scripts || true
+            [ -d "VSCodroid-main/android/gradle" ] && [ ! -d "gradle" ] && ln -s VSCodroid-main/android/gradle gradle || true
+            [ -f "VSCodroid-main/android/gradlew" ] && [ ! -f "gradlew" ] && ln -s VSCodroid-main/android/gradlew gradlew || true
+            [ -f "VSCodroid-main/android/gradlew.bat" ] && [ ! -f "gradlew.bat" ] && ln -s VSCodroid-main/android/gradlew.bat gradlew.bat || true
+            [ -f "VSCodroid-main/android/gradle.properties" ] && [ ! -f "gradle.properties" ] && ln -s VSCodroid-main/android/gradle.properties gradle.properties || true
+            [ -f "VSCodroid-main/android/build.gradle.kts" ] && [ ! -f "build.gradle.kts" ] && ln -s VSCodroid-main/android/build.gradle.kts build.gradle.kts || true
           fi
 
       - name: Set up JDK 17
@@ -187,18 +187,18 @@ jobs:
 
       - name: Support submodule VSCodroid-main nested directory layout
         run: |
-          if [ -d "VSCodroid-main" ]; then
-            echo "Submodule/nested directory VSCodroid-main detected. Syncing to root directory structure..."
-            [ ! -d "app" ] && ln -s VSCodroid-main/android/app app
-            [ ! -d "toolchain_go" ] && ln -s VSCodroid-main/android/toolchain_go toolchain_go
-            [ ! -d "toolchain_ruby" ] && ln -s VSCodroid-main/android/toolchain_ruby toolchain_ruby
-            [ ! -d "toolchain_java" ] && ln -s VSCodroid-main/android/toolchain_java toolchain_java
-            [ ! -d "scripts" ] && ln -s VSCodroid-main/scripts scripts
-            [ ! -d "gradle" ] && ln -s VSCodroid-main/android/gradle gradle
-            [ ! -f "gradlew" ] && ln -s VSCodroid-main/android/gradlew gradlew
-            [ ! -f "gradlew.bat" ] && ln -s VSCodroid-main/android/gradlew.bat gradlew.bat
-            [ ! -f "gradle.properties" ] && ln -s VSCodroid-main/android/gradle.properties gradle.properties
-            [ ! -f "build.gradle.kts" ] && ln -s VSCodroid-main/android/build.gradle.kts build.gradle.kts
+          if [ -d "VSCodroid-main/android" ]; then
+            echo "Submodule/nested directory VSCodroid-main detected with valid sources. Syncing to root directory structure..."
+            [ -d "VSCodroid-main/android/app" ] && [ ! -d "app" ] && ln -s VSCodroid-main/android/app app || true
+            [ -d "VSCodroid-main/android/toolchain_go" ] && [ ! -d "toolchain_go" ] && ln -s VSCodroid-main/android/toolchain_go toolchain_go || true
+            [ -d "VSCodroid-main/android/toolchain_ruby" ] && [ ! -d "toolchain_ruby" ] && ln -s VSCodroid-main/android/toolchain_ruby toolchain_ruby || true
+            [ -d "VSCodroid-main/android/toolchain_java" ] && [ ! -d "toolchain_java" ] && ln -s VSCodroid-main/android/toolchain_java toolchain_java || true
+            [ -d "VSCodroid-main/scripts" ] && [ ! -d "scripts" ] && ln -s VSCodroid-main/scripts scripts || true
+            [ -d "VSCodroid-main/android/gradle" ] && [ ! -d "gradle" ] && ln -s VSCodroid-main/android/gradle gradle || true
+            [ -f "VSCodroid-main/android/gradlew" ] && [ ! -f "gradlew" ] && ln -s VSCodroid-main/android/gradlew gradlew || true
+            [ -f "VSCodroid-main/android/gradlew.bat" ] && [ ! -f "gradlew.bat" ] && ln -s VSCodroid-main/android/gradlew.bat gradlew.bat || true
+            [ -f "VSCodroid-main/android/gradle.properties" ] && [ ! -f "gradle.properties" ] && ln -s VSCodroid-main/android/gradle.properties gradle.properties || true
+            [ -f "VSCodroid-main/android/build.gradle.kts" ] && [ ! -f "build.gradle.kts" ] && ln -s VSCodroid-main/android/build.gradle.kts build.gradle.kts || true
           fi
 
       - name: Set up JDK 17
