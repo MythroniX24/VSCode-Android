@@ -44,6 +44,7 @@ android {
             signingConfig = signingConfigs.getByName("release")
             isMinifyEnabled = true
             isShrinkResources = true
+            isCrunchPngs = false
             proguardFiles(
                 getDefaultProguardFile("proguard-android-optimize.txt"),
                 "proguard-rules.pro"
@@ -60,7 +61,7 @@ android {
     // (pattern "_*"). npm's @sigstore/protobuf-specs has a __generated__/
     // directory that gets silently dropped, breaking `npm install`. Override
     // to only skip dotfiles and VCS metadata (keep underscore-prefixed dirs).
-    aaptOptions {
+    androidResources {
         ignoreAssetsPattern = "!.svn:!.git:!.ds_store:!*.scc:.*:!CVS:!thumbs.db:!picasa.ini:!*.orig:*~"
     }
 

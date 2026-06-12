@@ -55,8 +55,7 @@ jobs:
           java-version: "17"
           distribution: "temurin"
 
-      - name: Set up Android SDK
-        uses: android-actions/setup-android@v3
+      # Android SDK is already pre-installed on ubuntu-latest
 
       - name: Set up NDK
         run: |
@@ -231,8 +230,7 @@ jobs:
           java-version: "17"
           distribution: "temurin"
 
-      - name: Set up Android SDK
-        uses: android-actions/setup-android@v3
+      # Android SDK is already pre-installed on ubuntu-latest
 
       - name: Setup Gradle
         uses: gradle/actions/setup-gradle@v4
