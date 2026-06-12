@@ -24,18 +24,29 @@ jobs:
 
       - name: Support submodule VSCodroid-main nested directory layout
         run: |
-          if [ -d "VSCodroid-main/android" ]; then
-            echo "Submodule/nested directory VSCodroid-main detected with valid sources. Syncing to root directory structure..."
-            [ -d "VSCodroid-main/android/app" ] && [ ! -d "app" ] && ln -s VSCodroid-main/android/app app || true
-            [ -d "VSCodroid-main/android/toolchain_go" ] && [ ! -d "toolchain_go" ] && ln -s VSCodroid-main/android/toolchain_go toolchain_go || true
-            [ -d "VSCodroid-main/android/toolchain_ruby" ] && [ ! -d "toolchain_ruby" ] && ln -s VSCodroid-main/android/toolchain_ruby toolchain_ruby || true
-            [ -d "VSCodroid-main/android/toolchain_java" ] && [ ! -d "toolchain_java" ] && ln -s VSCodroid-main/android/toolchain_java toolchain_java || true
-            [ -d "VSCodroid-main/scripts" ] && [ ! -d "scripts" ] && ln -s VSCodroid-main/scripts scripts || true
-            [ -d "VSCodroid-main/android/gradle" ] && [ ! -d "gradle" ] && ln -s VSCodroid-main/android/gradle gradle || true
-            [ -f "VSCodroid-main/android/gradlew" ] && [ ! -f "gradlew" ] && ln -s VSCodroid-main/android/gradlew gradlew || true
-            [ -f "VSCodroid-main/android/gradlew.bat" ] && [ ! -f "gradlew.bat" ] && ln -s VSCodroid-main/android/gradlew.bat gradlew.bat || true
-            [ -f "VSCodroid-main/android/gradle.properties" ] && [ ! -f "gradle.properties" ] && ln -s VSCodroid-main/android/gradle.properties gradle.properties || true
-            [ -f "VSCodroid-main/android/build.gradle.kts" ] && [ ! -f "build.gradle.kts" ] && ln -s VSCodroid-main/android/build.gradle.kts build.gradle.kts || true
+          if [ -d "VSCodroid-main" ]; then
+            echo "Submodule/nested directory VSCodroid-main detected. Syncing to root directory structure..."
+            SRC_PREFIX="VSCodroid-main"
+            if [ -d "VSCodroid-main/android" ]; then
+              echo "Using android/ nested folder structure inside VSCodroid-main..."
+              SRC_PREFIX="VSCodroid-main/android"
+            else
+              echo "Using direct structure inside VSCodroid-main..."
+            fi
+            [ -d "$SRC_PREFIX/app" ] && [ ! -d "app" ] && ln -s "$SRC_PREFIX/app" app || true
+            [ -d "$SRC_PREFIX/toolchain_go" ] && [ ! -d "toolchain_go" ] && ln -s "$SRC_PREFIX/toolchain_go" toolchain_go || true
+            [ -d "$SRC_PREFIX/toolchain_ruby" ] && [ ! -d "toolchain_ruby" ] && ln -s "$SRC_PREFIX/toolchain_ruby" toolchain_ruby || true
+            [ -d "$SRC_PREFIX/toolchain_java" ] && [ ! -d "toolchain_java" ] && ln -s "$SRC_PREFIX/toolchain_java" toolchain_java || true
+            if [ -d "VSCodroid-main/scripts" ]; then
+              [ ! -d "scripts" ] && ln -s "VSCodroid-main/scripts" scripts || true
+            elif [ -d "VSCodroid-main/android/scripts" ]; then
+              [ ! -d "scripts" ] && ln -s "VSCodroid-main/android/scripts" scripts || true
+            fi
+            [ -d "$SRC_PREFIX/gradle" ] && [ ! -d "gradle" ] && ln -s "$SRC_PREFIX/gradle" gradle || true
+            [ -f "$SRC_PREFIX/gradlew" ] && [ ! -f "gradlew" ] && ln -s "$SRC_PREFIX/gradlew" gradlew || true
+            [ -f "$SRC_PREFIX/gradlew.bat" ] && [ ! -f "gradlew.bat" ] && ln -s "$SRC_PREFIX/gradlew.bat" gradlew.bat || true
+            [ -f "$SRC_PREFIX/gradle.properties" ] && [ ! -f "gradle.properties" ] && ln -s "$SRC_PREFIX/gradle.properties" gradle.properties || true
+            [ -f "$SRC_PREFIX/build.gradle.kts" ] && [ ! -f "build.gradle.kts" ] && ln -s "$SRC_PREFIX/build.gradle.kts" build.gradle.kts || true
           fi
 
       - name: Set up JDK 17
@@ -187,18 +198,29 @@ jobs:
 
       - name: Support submodule VSCodroid-main nested directory layout
         run: |
-          if [ -d "VSCodroid-main/android" ]; then
-            echo "Submodule/nested directory VSCodroid-main detected with valid sources. Syncing to root directory structure..."
-            [ -d "VSCodroid-main/android/app" ] && [ ! -d "app" ] && ln -s VSCodroid-main/android/app app || true
-            [ -d "VSCodroid-main/android/toolchain_go" ] && [ ! -d "toolchain_go" ] && ln -s VSCodroid-main/android/toolchain_go toolchain_go || true
-            [ -d "VSCodroid-main/android/toolchain_ruby" ] && [ ! -d "toolchain_ruby" ] && ln -s VSCodroid-main/android/toolchain_ruby toolchain_ruby || true
-            [ -d "VSCodroid-main/android/toolchain_java" ] && [ ! -d "toolchain_java" ] && ln -s VSCodroid-main/android/toolchain_java toolchain_java || true
-            [ -d "VSCodroid-main/scripts" ] && [ ! -d "scripts" ] && ln -s VSCodroid-main/scripts scripts || true
-            [ -d "VSCodroid-main/android/gradle" ] && [ ! -d "gradle" ] && ln -s VSCodroid-main/android/gradle gradle || true
-            [ -f "VSCodroid-main/android/gradlew" ] && [ ! -f "gradlew" ] && ln -s VSCodroid-main/android/gradlew gradlew || true
-            [ -f "VSCodroid-main/android/gradlew.bat" ] && [ ! -f "gradlew.bat" ] && ln -s VSCodroid-main/android/gradlew.bat gradlew.bat || true
-            [ -f "VSCodroid-main/android/gradle.properties" ] && [ ! -f "gradle.properties" ] && ln -s VSCodroid-main/android/gradle.properties gradle.properties || true
-            [ -f "VSCodroid-main/android/build.gradle.kts" ] && [ ! -f "build.gradle.kts" ] && ln -s VSCodroid-main/android/build.gradle.kts build.gradle.kts || true
+          if [ -d "VSCodroid-main" ]; then
+            echo "Submodule/nested directory VSCodroid-main detected. Syncing to root directory structure..."
+            SRC_PREFIX="VSCodroid-main"
+            if [ -d "VSCodroid-main/android" ]; then
+              echo "Using android/ nested folder structure inside VSCodroid-main..."
+              SRC_PREFIX="VSCodroid-main/android"
+            else
+              echo "Using direct structure inside VSCodroid-main..."
+            fi
+            [ -d "$SRC_PREFIX/app" ] && [ ! -d "app" ] && ln -s "$SRC_PREFIX/app" app || true
+            [ -d "$SRC_PREFIX/toolchain_go" ] && [ ! -d "toolchain_go" ] && ln -s "$SRC_PREFIX/toolchain_go" toolchain_go || true
+            [ -d "$SRC_PREFIX/toolchain_ruby" ] && [ ! -d "toolchain_ruby" ] && ln -s "$SRC_PREFIX/toolchain_ruby" toolchain_ruby || true
+            [ -d "$SRC_PREFIX/toolchain_java" ] && [ ! -d "toolchain_java" ] && ln -s "$SRC_PREFIX/toolchain_java" toolchain_java || true
+            if [ -d "VSCodroid-main/scripts" ]; then
+              [ ! -d "scripts" ] && ln -s "VSCodroid-main/scripts" scripts || true
+            elif [ -d "VSCodroid-main/android/scripts" ]; then
+              [ ! -d "scripts" ] && ln -s "VSCodroid-main/android/scripts" scripts || true
+            fi
+            [ -d "$SRC_PREFIX/gradle" ] && [ ! -d "gradle" ] && ln -s "$SRC_PREFIX/gradle" gradle || true
+            [ -f "$SRC_PREFIX/gradlew" ] && [ ! -f "gradlew" ] && ln -s "$SRC_PREFIX/gradlew" gradlew || true
+            [ -f "$SRC_PREFIX/gradlew.bat" ] && [ ! -f "gradlew.bat" ] && ln -s "$SRC_PREFIX/gradlew.bat" gradlew.bat || true
+            [ -f "$SRC_PREFIX/gradle.properties" ] && [ ! -f "gradle.properties" ] && ln -s "$SRC_PREFIX/gradle.properties" gradle.properties || true
+            [ -f "$SRC_PREFIX/build.gradle.kts" ] && [ ! -f "build.gradle.kts" ] && ln -s "$SRC_PREFIX/build.gradle.kts" build.gradle.kts || true
           fi
 
       - name: Set up JDK 17

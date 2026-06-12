@@ -26,7 +26,7 @@ android {
     }
 
     defaultConfig {
-        applicationId = "com.aistudio.vscodroid.kxmpzq"
+        applicationId = "com.vscodroid"
         minSdk = 33
         targetSdk = 36
         versionCode = 10
