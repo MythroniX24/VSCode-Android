@@ -15,11 +15,7 @@ class VSCodroidApp : Application() {
         Logger.init(this)
         CrashReporter.init(this)
 
-        // Pre-warm: loading the Chromium library is the slowest part of
-        // WebView creation (~200-400ms). Creating and immediately destroying
-        // a throwaway WebView triggers the library load so the real WebView
-        // in MainActivity starts faster.
-        WebView(this).destroy()
+        // Pre-warm removed as it can cause crashes on certain devices when instantiated with an Application Context.
 
         createNotificationChannel()
         Logger.i("VSCodroidApp", "Application created")
