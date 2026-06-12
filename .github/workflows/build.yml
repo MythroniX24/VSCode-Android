@@ -22,6 +22,22 @@ jobs:
         with:
           submodules: recursive
 
+      - name: Support submodule VSCodroid-main nested directory layout
+        run: |
+          if [ -d "VSCodroid-main" ]; then
+            echo "Submodule/nested directory VSCodroid-main detected. Syncing to root directory structure..."
+            [ ! -d "app" ] && ln -s VSCodroid-main/android/app app
+            [ ! -d "toolchain_go" ] && ln -s VSCodroid-main/android/toolchain_go toolchain_go
+            [ ! -d "toolchain_ruby" ] && ln -s VSCodroid-main/android/toolchain_ruby toolchain_ruby
+            [ ! -d "toolchain_java" ] && ln -s VSCodroid-main/android/toolchain_java toolchain_java
+            [ ! -d "scripts" ] && ln -s VSCodroid-main/scripts scripts
+            [ ! -d "gradle" ] && ln -s VSCodroid-main/android/gradle gradle
+            [ ! -f "gradlew" ] && ln -s VSCodroid-main/android/gradlew gradlew
+            [ ! -f "gradlew.bat" ] && ln -s VSCodroid-main/android/gradlew.bat gradlew.bat
+            [ ! -f "gradle.properties" ] && ln -s VSCodroid-main/android/gradle.properties gradle.properties
+            [ ! -f "build.gradle.kts" ] && ln -s VSCodroid-main/android/build.gradle.kts build.gradle.kts
+          fi
+
       - name: Set up JDK 17
         uses: actions/setup-java@v4
         with:
@@ -168,6 +184,22 @@ jobs:
         uses: actions/checkout@v4
         with:
           submodules: recursive
+
+      - name: Support submodule VSCodroid-main nested directory layout
+        run: |
+          if [ -d "VSCodroid-main" ]; then
+            echo "Submodule/nested directory VSCodroid-main detected. Syncing to root directory structure..."
+            [ ! -d "app" ] && ln -s VSCodroid-main/android/app app
+            [ ! -d "toolchain_go" ] && ln -s VSCodroid-main/android/toolchain_go toolchain_go
+            [ ! -d "toolchain_ruby" ] && ln -s VSCodroid-main/android/toolchain_ruby toolchain_ruby
+            [ ! -d "toolchain_java" ] && ln -s VSCodroid-main/android/toolchain_java toolchain_java
+            [ ! -d "scripts" ] && ln -s VSCodroid-main/scripts scripts
+            [ ! -d "gradle" ] && ln -s VSCodroid-main/android/gradle gradle
+            [ ! -f "gradlew" ] && ln -s VSCodroid-main/android/gradlew gradlew
+            [ ! -f "gradlew.bat" ] && ln -s VSCodroid-main/android/gradlew.bat gradlew.bat
+            [ ! -f "gradle.properties" ] && ln -s VSCodroid-main/android/gradle.properties gradle.properties
+            [ ! -f "build.gradle.kts" ] && ln -s VSCodroid-main/android/build.gradle.kts build.gradle.kts
+          fi
 
       - name: Set up JDK 17
         uses: actions/setup-java@v4
