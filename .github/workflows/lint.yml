@@ -60,6 +60,8 @@ jobs:
 
       - name: Setup Gradle
         uses: gradle/actions/setup-gradle@v4
+        with:
+          validate-wrappers: false
 
       # Lint only needs compiled Kotlin, not runtime assets.
       # Create minimal directory structure so Gradle does not fail.

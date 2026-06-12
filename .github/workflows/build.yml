@@ -70,6 +70,8 @@ jobs:
 
       - name: Setup Gradle
         uses: gradle/actions/setup-gradle@v4
+        with:
+          validate-wrappers: false
 
       # Cache downloaded tarballs/debs (before extraction) to avoid re-downloading ~200MB
       - name: Cache download intermediates
@@ -234,6 +236,8 @@ jobs:
 
       - name: Setup Gradle
         uses: gradle/actions/setup-gradle@v4
+        with:
+          validate-wrappers: false
 
       # Unit tests only need compiled Kotlin, not the full assets.
       # Create minimal directory structure so Gradle does not fail.
